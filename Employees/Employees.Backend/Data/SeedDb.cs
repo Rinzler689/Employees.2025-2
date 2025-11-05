@@ -16,6 +16,7 @@ public class SeedDb
     {
         await _context.Database.EnsureCreatedAsync();
         await CheckEmployeesFullAsync();
+        await CheckCountriesFullAsync();
     }
 
     private async Task CheckEmployeesFullAsync()
@@ -24,6 +25,15 @@ public class SeedDb
         {
             var employeesSQLScript = File.ReadAllText("Data\\EmployeesTaskScript.sql");
             await _context.Database.ExecuteSqlRawAsync(employeesSQLScript);
+        }
+    }
+
+    private async Task CheckCountriesFullAsync()
+    {
+        if (!_context.Countries.Any())
+        {
+            var countriesSQLScript = File.ReadAllText("Data\\CountriesStatesCities.sql");
+            await _context.Database.ExecuteSqlRawAsync(countriesSQLScript);
         }
     }
 }

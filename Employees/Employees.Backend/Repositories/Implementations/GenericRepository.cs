@@ -135,4 +135,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         Message = exception.Message
     };
+
+    private ActionResponse<T> DbUpdateExceptionActionResponse() => new ActionResponse<T>
+    {
+        Message = "Ya existe el registro."
+    };
 }

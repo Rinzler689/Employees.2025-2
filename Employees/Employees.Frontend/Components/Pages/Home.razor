@@ -1,4 +1,14 @@
 ﻿@page "/"
 
-<PageTitle>Employees</PageTitle>
-<MudText Typo="Typo.h3" GutterBottom="true">Bienvenido a Employees</MudText>
+<PageTitle>Inicio</PageTitle>
+
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <MudText Typo="Typo.h3" Class="m-2" GutterBottom="true">Hola @context.User.Identity?.Name</MudText>
+    </Authorized>
+    <NotAuthorized>
+        <MudText Typo="Typo.h3" Class="m-2" GutterBottom="true">Eres usuario Anonimo</MudText>
+    </NotAuthorized>
+</AuthorizeView>
+
+<MudText Class="m-2">Employees sistema de empleados para el curso de Servicios WEB 2025-II</MudText>

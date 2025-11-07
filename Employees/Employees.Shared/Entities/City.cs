@@ -15,6 +15,4 @@ public class City : IEntityWithName
     public int StateId { get; set; }
 
     public State? State { get; set; }
-
-    //public ICollection<User>? Users { get; set; }
 }

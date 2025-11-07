@@ -55,6 +55,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
                 Result = entity
             };
         }
+        catch (DbUpdateException)
+        {
+            return DbUpdateExceptionActionResponse();
+        }
         catch (Exception exception)
         {
             return ExceptionActionRespose(exception);
@@ -124,6 +128,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
                 WasSuccess = true,
                 Result = entity
             };
+        }
+        catch (DbUpdateException)
+        {
+            return DbUpdateExceptionActionResponse();
         }
         catch (Exception exception)
         {

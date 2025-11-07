@@ -1,13 +1,11 @@
 ﻿using Employees.Backend.UnitsOfWork.Interfaces;
 using Employees.Shared.DTOs;
 using Employees.Shared.Entities;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Employees.Backend.Controllers;
 
 [ApiController]
-//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 public class StatesController : GenericController<State>
 {
@@ -18,7 +16,6 @@ public class StatesController : GenericController<State>
         _statesUnitOfWork = statesUnitOfWork;
     }
 
-    //[AllowAnonymous]
     [HttpGet("combo/{countryId:int}")]
     public async Task<IActionResult> GetComboAsync(int countryId)
     {

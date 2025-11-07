@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace Employees.Backend.Controllers;
 
 [ApiController]
-//[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/[controller]")]
 public class CitiesController : GenericController<City>
 {
@@ -18,7 +17,6 @@ public class CitiesController : GenericController<City>
         _citiesUnitOfWork = citiesUnitOfWork;
     }
 
-    //[AllowAnonymous]
     [HttpGet("combo/{stateId:int}")]
     public async Task<IActionResult> GetComboAsync(int stateId)
     {

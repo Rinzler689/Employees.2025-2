@@ -15,8 +15,8 @@ public class SeedDb
     public async Task SeedAsync()
     {
         await _context.Database.EnsureCreatedAsync();
-        await CheckEmployeesFullAsync();
         await CheckCountriesFullAsync();
+        await CheckEmployeesFullAsync();
     }
 
     private async Task CheckEmployeesFullAsync()

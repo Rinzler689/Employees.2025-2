@@ -19,6 +19,7 @@ public class CitiesController : GenericController<City>
         _citiesUnitOfWork = citiesUnitOfWork;
     }
 
+    [AllowAnonymous]
     [HttpGet("combo/{stateId:int}")]
     public async Task<IActionResult> GetComboAsync(int stateId)
     {

@@ -9,7 +9,7 @@ using System.Net;
 
 namespace Employees.Frontend.Components.Pages.Workers;
 
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin,User")]
 public partial class WorkersIndex
 {
     private List<Employee>? Employees { get; set; }

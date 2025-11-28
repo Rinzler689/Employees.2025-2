@@ -1,13 +1,24 @@
-﻿
+﻿﻿@using Microsoft.AspNetCore.Components.Authorization
+
 <MudNavMenu>
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Inicio</MudNavLink>
-    <AuthorizeView Roles="Admin">
-        <Authorized>
-            <MudNavLink Href="employees" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.ManageAccounts">Empleados</MudNavLink>
-            <MudNavLink Href="countries" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Public">Países</MudNavLink>
+    <AuthorizeView>
+        <Authorized Context="authState">
+            @{
+                var user = authState.User;
+                bool isAdmin = user.IsInRole("Admin");
+                bool isUser = user.IsInRole("User");
+            }
+
+            <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Inicio</MudNavLink>
+            <MudNavLink Href="employees" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.PersonSearch">Empleados</MudNavLink>
+
+            @if (isAdmin)
+            {
+                <MudNavLink Href="countries" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Public">
+                    Países
+                </MudNavLink>
+            }
+
         </Authorized>
     </AuthorizeView>
-
 </MudNavMenu>
-
-
